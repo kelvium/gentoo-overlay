@@ -18,7 +18,7 @@ https://github.com/pajlada/settings/archive/04792d8.tar.gz -> settings-04792d8.t
 https://github.com/arsenm/sanitizers-cmake/archive/99e159e.tar.gz -> sanitizers-cmake-99e159e.tar.gz
 "
 
-S=${WORKDIR}/chatterino2-${PV}
+S=${WORKDIR}/chatterino7-${PV}
 
 LICENSE="MIT"
 SLOT="0"
