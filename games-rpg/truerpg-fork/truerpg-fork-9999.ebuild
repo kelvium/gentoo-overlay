@@ -6,7 +6,10 @@ DESCRIPTION="The game we all dream about"
 HOMEPAGE="https://github.com/Kelvium/TrueRPG"
 
 EGIT_REPO_URI="https://github.com/Kelvium/TrueRPG"
-EGIT_BRANCH="main"
+
+if [ -z ${EGIT_BRANCH+x} ]; then
+	EGIT_BRANCH="main"
+fi
 
 # TODO: ask compile_and_run
 LICENSE=""
