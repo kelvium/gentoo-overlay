@@ -6,7 +6,10 @@ DESCRIPTION="The game we all dream about"
 HOMEPAGE="https://github.com/TrueRPG/TrueRPG"
 
 EGIT_REPO_URI="https://github.com/TrueRPG/TrueRPG"
-EGIT_BRANCH="main"
+
+if [ -z ${EGIT_BRANCH+x} ]; then
+	EGIT_BRANCH="main"
+fi
 
 # TODO: ask compile_and_run
 LICENSE=""
@@ -28,6 +31,7 @@ src_configure() {
 		-DTRUERPG_USE_SYSTEM_GLM=On
 		-DTRUERPG_USE_SYSTEM_FREETYPE=On
 		-DTRUERPG_USE_SYSTEM_YAMLCPP=On
+		-DTRUERPG_RES_DIR_PREFIX="/opt/truerpg"
 	)
 
 	if use debug; then
