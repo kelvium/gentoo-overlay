@@ -14,8 +14,8 @@ SLOT="0"
 IUSE="debug"
 KEYWORDS=""
 
-RDEPEND="virtual/opengl media-libs/glfw media-libs/glm media-libs/freetype"
-BDEPEND=">=dev-util/cmake-3.15.0"
+RDEPEND="virtual/opengl media-libs/glfw media-libs/glm media-libs/freetype dev-cpp/yaml-cpp"
+BDEPEND=">=dev-util/cmake-3.15.0 media-libs/glfw media-libs/glm media-libs/freetype dev-cpp/yaml-cpp"
 
 src_prepare() {
 	cmake_src_prepare
@@ -27,6 +27,7 @@ src_configure() {
 		-DTRUERPG_USE_SYSTEM_GLFW=On
 		-DTRUERPG_USE_SYSTEM_GLM=On
 		-DTRUERPG_USE_SYSTEM_FREETYPE=On
+		-DTRUERPG_USE_SYSTEM_YAMLCPP=On
 	)
 
 	if use debug; then
