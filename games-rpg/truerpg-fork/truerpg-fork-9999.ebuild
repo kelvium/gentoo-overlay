@@ -3,9 +3,9 @@ EAPI=8
 inherit cmake git-r3
 
 DESCRIPTION="The game we all dream about"
-HOMEPAGE="https://github.com/TrueRPG/TrueRPG"
+HOMEPAGE="https://github.com/Kelvium/TrueRPG"
 
-EGIT_REPO_URI="https://github.com/TrueRPG/TrueRPG"
+EGIT_REPO_URI="https://github.com/Kelvium/TrueRPG"
 EGIT_BRANCH="main"
 
 # TODO: ask compile_and_run
@@ -14,7 +14,7 @@ SLOT="0"
 IUSE="debug"
 KEYWORDS=""
 
-RDEPEND="!games-rpg/truerpg-fork virtual/opengl media-libs/glfw media-libs/glm media-libs/freetype dev-cpp/yaml-cpp"
+RDEPEND="!games-rpg/truerpg virtual/opengl media-libs/glfw media-libs/glm media-libs/freetype dev-cpp/yaml-cpp"
 BDEPEND=">=dev-util/cmake-3.15.0 media-libs/glfw media-libs/glm media-libs/freetype dev-cpp/yaml-cpp"
 
 src_prepare() {
@@ -28,6 +28,7 @@ src_configure() {
 		-DTRUERPG_USE_SYSTEM_GLM=On
 		-DTRUERPG_USE_SYSTEM_FREETYPE=On
 		-DTRUERPG_USE_SYSTEM_YAMLCPP=On
+		-DTRUERPG_RES_DIR="/opt/truerpg/res"
 	)
 
 	if use debug; then
