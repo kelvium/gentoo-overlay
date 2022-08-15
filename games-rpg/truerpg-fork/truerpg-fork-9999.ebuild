@@ -28,7 +28,7 @@ src_configure() {
 		-DTRUERPG_USE_SYSTEM_GLM=On
 		-DTRUERPG_USE_SYSTEM_FREETYPE=On
 		-DTRUERPG_USE_SYSTEM_YAMLCPP=On
-		-DTRUERPG_RES_DIR="/opt/truerpg/res"
+		-DTRUERPG_RES_DIR="/opt/truerpg"
 	)
 
 	if use debug; then
