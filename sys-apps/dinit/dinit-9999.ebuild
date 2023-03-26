@@ -10,7 +10,22 @@ KEYWORDS="~amd64"
 LICENSE="Apache-2.0"
 BDEPEND="sys-devel/autoconf"
 SLOT="0"
+IUSE="+shutdown"
+RDEPEND="
+	shutdown? (
+	 	!sys-apps/openrc
+		!sys-apps/systemd
+		!sys-apps/sysvinit
+		!sys-apps/s6-linux-init
+	)
+"
+DEPEND="$RDEPEND"
 
 src_configure() {
-	econf "--disable-shutdown"
+	local myconf
+	if ! use shutdown; then
+		myconf+=" --disable-shutdown"
+	fi
+
+	econf $myconf
 }
