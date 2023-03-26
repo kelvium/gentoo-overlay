@@ -3,10 +3,9 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools git-r3
 
-SRC_URI="https://github.com/davmac314/dinit/archive/refs/heads/master.zip -> master.zip"
-S="${WORKDIR}/dinit-master"
+EGIT_REPO_URI="https://github.com/davmac314/$PN.git"
 KEYWORDS="~amd64"
 LICENSE="Apache-2.0"
 BDEPEND="sys-devel/autoconf"
