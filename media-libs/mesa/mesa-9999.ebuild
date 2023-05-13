@@ -12,13 +12,10 @@ MY_P="${P/_/-}"
 DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
 
-if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/mesa.git"
-	inherit git-r3
-else
-	SRC_URI="https://archive.mesa3d.org/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
-fi
+EGIT_REPO_URI="https://gitlab.freedesktop.org/nouveau/mesa.git"
+EGIT_CLONE_TYPE="shallow"
+EGIT_BRANCH="nvk/main"
+inherit git-r3
 
 LICENSE="MIT"
 SLOT="0"
@@ -206,11 +203,6 @@ x86? (
 	usr/lib/libGLX_mesa.so.0.0.0
 )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-23.0.2-wayland-crash-warnings.patch
-	"${FILESDIR}"/${PN}-23.0.2-wayland-crash-warnings-2.patch
-)
-
 llvm_check_deps() {
 	local flags=${MULTILIB_USEDEP}
 	if use video_cards_r600 || use video_cards_radeon || use video_cards_radeonsi
@@ -230,6 +222,7 @@ pkg_pretend() {
 		   ! use video_cards_freedreno &&
 		   ! use video_cards_intel &&
 		   ! use video_cards_radeonsi &&
+		   ! use video_cards_nouveau &&
 		   ! use video_cards_v3d; then
 			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain d3d12, freedreno, intel, radeonsi, or v3d"
 		fi
@@ -397,12 +390,13 @@ multilib_src_configure() {
 	)
 
 	if use vulkan; then
+		vulkan_enable -- swrast
 		vulkan_enable video_cards_freedreno freedreno
 		vulkan_enable video_cards_intel intel intel_hasvk
 		vulkan_enable video_cards_d3d12 microsoft-experimental
+		vulkan_enable video_cards_nouveau nouveau-experimental
 		vulkan_enable video_cards_radeonsi amd
 		vulkan_enable video_cards_v3d broadcom
-		vulkan_enable -- swrast
 	fi
 
 	driver_list() {
