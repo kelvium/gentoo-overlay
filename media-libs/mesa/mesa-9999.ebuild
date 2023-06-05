@@ -22,7 +22,7 @@ SLOT="0"
 RESTRICT="!test? ( test )"
 
 RADEON_CARDS="r300 r600 radeon radeonsi"
-VIDEO_CARDS="${RADEON_CARDS} d3d12 freedreno intel lima nouveau panfrost v3d vc4 virgl vivante vmware"
+VIDEO_CARDS="${RADEON_CARDS} d3d12 freedreno intel lima nouveau nvk panfrost v3d vc4 virgl vivante vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -394,7 +394,7 @@ multilib_src_configure() {
 		vulkan_enable video_cards_freedreno freedreno
 		vulkan_enable video_cards_intel intel intel_hasvk
 		vulkan_enable video_cards_d3d12 microsoft-experimental
-		vulkan_enable video_cards_nouveau nouveau-experimental
+		vulkan_enable video_cards_nvk nouveau-experimental
 		vulkan_enable video_cards_radeonsi amd
 		vulkan_enable video_cards_v3d broadcom
 	fi
