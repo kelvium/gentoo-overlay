@@ -21,6 +21,9 @@ LICENSE="MIT"
 SLOT="0"
 RESTRICT="!test? ( test )"
 
+# nvk requires that, but it is currently disabled because of "file collisions"
+LDFLAGS+=" -Wl,--build-id"
+
 RADEON_CARDS="r300 r600 radeon radeonsi"
 VIDEO_CARDS="${RADEON_CARDS} d3d12 freedreno intel lima nouveau nvk panfrost v3d vc4 virgl vivante vmware"
 for card in ${VIDEO_CARDS}; do
