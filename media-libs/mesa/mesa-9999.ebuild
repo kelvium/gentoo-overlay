@@ -12,9 +12,9 @@ MY_P="${P/_/-}"
 DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
 
-EGIT_REPO_URI="https://gitlab.freedesktop.org/nouveau/mesa.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/mesa.git"
 EGIT_CLONE_TYPE="shallow"
-EGIT_BRANCH="nvk/main"
+EGIT_BRANCH="main"
 inherit git-r3
 
 LICENSE="MIT"
