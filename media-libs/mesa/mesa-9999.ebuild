@@ -435,7 +435,6 @@ multilib_src_configure() {
 		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
 		--buildtype $(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
-		-Dnvk-legacy-uapi=true
 	)
 	meson_src_configure
 }
